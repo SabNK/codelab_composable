@@ -26,7 +26,7 @@ fun WellnessScreen(
     wellnessViewModel: WellnessViewModel = viewModel()
 ) {
     Column(modifier = modifier) {
-        StatefulCounter()
+        WaterCounter(modifier)
 
         WellnessTasksList(
             list = wellnessViewModel.tasks,
