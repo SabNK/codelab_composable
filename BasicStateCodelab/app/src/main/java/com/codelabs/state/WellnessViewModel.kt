@@ -18,13 +18,19 @@ package com.codelabs.state
 import androidx.compose.runtime.toMutableStateList
 import androidx.lifecycle.ViewModel
 
-class WellnessViewModel : ViewModel() {
+/*class WellnessViewModel : ViewModel() {
     /**
      * Don't expose the mutable list of tasks from outside the ViewModel.
      * Instead define _tasks and tasks. _tasks is internal and mutable inside the ViewModel.
      * tasks is public and read-only.
      */
     private val _tasks = getWellnessTasks().toMutableStateList()
+    /**
+     * You can use the mutableStateListOf API instead to create the list.
+     * However, the way you use it might result in unexpected recomposition and
+     * suboptimal UI performance.
+     * mutableStateListOf<WellnessTask>().apply { addAll(getWellnessTasks())
+     */
     val tasks: List<WellnessTask>
         get() = _tasks
 
@@ -39,3 +45,19 @@ class WellnessViewModel : ViewModel() {
 }
 
 private fun getWellnessTasks() = List(30) { i -> WellnessTask(i, "Task # $i") }
+*/
+
+fun getWellnessTasks() = List(30) { i -> WellnessTask(i, "Task # $i") }
+
+class WellnessViewModel: ViewModel() {
+    private val _tasks = getWellnessTasks().toMutableStateList()
+    val tasks: List<WellnessTask>
+        get() = _tasks
+
+    fun changeTaskChecked(item: WellnessTask, checked: Boolean) {
+        tasks.find {it.id == item.id}?.let{
+            it.checked = checked
+        }
+    }
+    fun remove(task: WellnessTask) = _tasks.remove(task)
+}
