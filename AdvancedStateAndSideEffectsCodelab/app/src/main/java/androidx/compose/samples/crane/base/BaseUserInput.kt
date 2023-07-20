@@ -132,7 +132,11 @@ fun PreviewInput() {
                 caption = "Caption",
                 showCaption = { true }
             ) {
-                Text(text = "text", style = MaterialTheme.typography.body1)
+                //Text(text = "text", style = MaterialTheme.typography.body1)
+                Icon(modifier = Modifier.size(24.dp, 24.dp),
+                    painter = painterResource(id = R.drawable.ic_calendar),
+                    tint = if (true) LocalContentColor.current else Color(0x80FFFFFF),
+                    contentDescription = null)
             }
         }
     }
