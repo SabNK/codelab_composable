@@ -47,6 +47,7 @@ android {
     }
     buildFeatures {
         dataBinding true
+        //To Compose
         compose true
     }
     composeOptions {

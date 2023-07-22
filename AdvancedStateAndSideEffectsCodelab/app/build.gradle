@@ -128,6 +128,8 @@ dependencies {
     // To start using the collectAsStateWithLifecycle API,
     implementation "androidx.lifecycle:lifecycle-runtime-compose:$lifecycle_version"
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version"
+    //To start using the collectAsStateWithLifecycle API
+    implementation "androidx.lifecycle:lifecycle-runtime-compose:$lifecycle_version"
     implementation "com.google.dagger:hilt-android:2.46"
     kapt "com.google.dagger:hilt-compiler:2.46"
 

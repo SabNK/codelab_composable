@@ -41,19 +41,19 @@ class MainViewModel @Inject constructor(
 
     val hotels: List<ExploreModel> = destinationsRepository.hotels
     val restaurants: List<ExploreModel> = destinationsRepository.restaurants
-
     private val _suggestedDestinations = MutableStateFlow<List<ExploreModel>>(emptyList())
-    val suggestedDestination: StateFlow<List<ExploreModel>> = _suggestedDestinations.asStateFlow()
-    init{
-         _suggestedDestinations.value = destinationsRepository.destinations
-    }
 
+    val suggestedDestinations: StateFlow<List<ExploreModel>> = _suggestedDestinations.asStateFlow()
+
+    init {
+        _suggestedDestinations.value = destinationsRepository.destinations
+    }
 
     fun updatePeople(people: Int) {
         viewModelScope.launch {
             if (people > MAX_PEOPLE) {
             // TODO Codelab: Uncomment
-            _suggestedDestinations.value = emptyList()
+                _suggestedDestinations.value = emptyList()
             } else {
                 val newDestinations = withContext(defaultDispatcher) {
                     destinationsRepository.destinations

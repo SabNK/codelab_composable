@@ -36,14 +36,11 @@ fun LandingScreen(onTimeout: () -> Unit, modifier: Modifier = Modifier) {
     Box(modifier = modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
         // TODO Codelab: LaunchedEffect and rememberUpdatedState step
         // TODO: Make LandingScreen disappear after loading data
-        // This will always refer to the latest onTimeout function that
-        // LandingScreen was recomposed with
         val currentOnTimeout by rememberUpdatedState(onTimeout)
-        Image(painterResource(id = R.drawable.ic_crane_drawer), contentDescription = null)
-
         LaunchedEffect(Unit) {
-            delay(SplashWaitTime)
-            currentOnTimeout()
+            delay(SplashWaitTime) // Simulates loading things
+            onTimeout()
         }
+        Image(painterResource(id = R.drawable.ic_crane_drawer), contentDescription = null)
     }
 }
