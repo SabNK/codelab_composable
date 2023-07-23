@@ -75,6 +75,7 @@ fun ExploreSection(
 
     Surface(modifier = modifier.fillMaxSize(), color = Color.White, shape = BottomSheetShape) {
         Column(modifier = Modifier.padding(start = 24.dp, top = 20.dp, end = 24.dp)) {
+
             Text(
                 text = title,
                 style = MaterialTheme.typography.caption.copy(color = crane_caption)
@@ -83,7 +84,6 @@ fun ExploreSection(
             // TODO Codelab: derivedStateOf step
             // TODO: Show "Scroll to top" button when the first item of the list is not visible
             val listState = rememberLazyListState()
-            ExploreList(exploreList, onItemClicked, listState = listState)
             val showButton by remember {
                 derivedStateOf {
                     listState.firstVisibleItemIndex > 0
@@ -92,12 +92,13 @@ fun ExploreSection(
 
             if (showButton) {
                 val coroutineScope = rememberCoroutineScope()
+
                 FloatingActionButton(
                     backgroundColor = MaterialTheme.colors.primary,
-                    modifier = Modifier
-                        .align(Alignment.End)
-                        .navigationBarsPadding()
-                        .padding(bottom = 8.dp),
+                    //modifier = Modifier
+                    //.align(Alignment.End)
+                    //.navigationBarsPadding()
+                    //.padding(bottom = 8.dp),
                     onClick = {
                         coroutineScope.launch {
                             listState.scrollToItem(0)
@@ -107,6 +108,11 @@ fun ExploreSection(
                     Text("Up!")
                 }
             }
+            ExploreList(exploreList, onItemClicked, listState = listState)
+
+
+
+
         }
     }
 }

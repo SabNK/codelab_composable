@@ -25,6 +25,7 @@ import androidx.compose.material.Scaffold
 import androidx.compose.material.rememberBackdropScaffoldState
 import androidx.compose.material.rememberScaffoldState
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.Recomposer
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -65,6 +66,7 @@ fun CraneHome(
             modifier = modifier.padding(padding),
             onExploreItemClicked = onExploreItemClicked,
             openDrawer = {
+
                 // TODO Codelab: rememberCoroutineScope step - open the navigation drawer
                 scope.launch {
                     scaffoldState.drawerState.open()
